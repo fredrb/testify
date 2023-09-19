@@ -89,6 +89,16 @@ func failOnPanic(t *testing.T, r interface{}) {
 	}
 }
 
+// Log wraps the Log function from testing.T
+func (suite *Suite) Log(message string) {
+	suite.T().Log(message)
+}
+
+// Logf wraps the Logf function from testing.T
+func (suite *Suite) Logf(message string, args... interface{}) {
+	suite.T().Logf(message, args...)
+}
+
 // Run provides suite functionality around golang subtests.  It should be
 // called in place of t.Run(name, func(t *testing.T)) in test suite code.
 // The passed-in func will be executed as a subtest with a fresh instance of t.
